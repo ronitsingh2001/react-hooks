@@ -11,7 +11,6 @@ hooks.forEach(hook => {
 function Main() {
     const [hook, setHook] = useState(hooks[hooks.length - 1]);
     const HookComponent = componentMap[hook];
-    console.log(HookComponent);
 
     return (
         <>
