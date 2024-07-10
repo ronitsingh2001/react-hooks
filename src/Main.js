@@ -2,6 +2,7 @@ import { useState } from "react";
 import UseEffect from "./UseEffect";
 import UseState from "./UseState";
 import UseContext from "./UseContext";
+import UseRef from "./UseRef";
 
 
 function Main() {
@@ -13,6 +14,7 @@ function Main() {
                 <button onClick={() => setHook('useState')}>useState</button>
                 <button onClick={() => setHook('useEffect')}>useEffect</button>
                 <button onClick={() => setHook('useContext')}>useContext</button>
+                <button onClick={() => setHook('useRef')}>useref</button>
             </nav>
             {
                 hook === 'useState' && <>
@@ -32,6 +34,12 @@ function Main() {
                     <h1>useContext</h1>
                     <hr></hr>
                     <UseContext />
+                </>
+            }{
+                hook === 'useRef' && <>
+                    <h1>useContext</h1>
+                    <hr></hr>
+                    <UseRef />
                 </>
             }
         </>
