@@ -5,5 +5,7 @@ export const hooks = [
     'UseRef',
     'UseMemo',
     'UseCallback',
-    'UseReducer'
+    'UseReducer',
+    'UseTransition',
+    'UseDeferredValue'
 ];
