@@ -4,5 +4,5 @@ export const hooks = [
     'UseContext',
     'UseRef',
     'UseMemo',
-
+    'UseCallback'
 ];

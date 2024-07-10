@@ -9,15 +9,15 @@ hooks.forEach(hook => {
 });
 
 function Main() {
-    const [hook, setHook] = useState('UseState');
+    const [hook, setHook] = useState(hooks[hooks.length - 1]);
     const HookComponent = componentMap[hook];
-    console.log(HookComponent)
+    console.log(HookComponent);
 
     return (
         <>
             <nav>
-                {hooks.map(hookName => (
-                    <button key={hookName} onClick={() => setHook(hookName)}>
+                {hooks.map((hookName) => (
+                    <button key={hookName} onClick={() => setHook(hookName)} style={{ borderColor: hookName === hook ? 'blue' : '' }}>
                         {hookName}
                     </button>
                 ))}
