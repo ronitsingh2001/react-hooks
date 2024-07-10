@@ -1,47 +1,36 @@
-import { useState } from "react";
-import UseEffect from "./UseEffect";
-import UseState from "./UseState";
-import UseContext from "./UseContext";
-import UseRef from "./UseRef";
+import React, { useState, lazy, Suspense } from "react";
+import { hooks } from "./hooks";
 
+// Create a map for dynamically imported components
+const componentMap = {};
+
+hooks.forEach(hook => {
+    componentMap[hook] = lazy(() => import(`./${hook}`));
+});
 
 function Main() {
-    const [hook, setHook] = useState('useState');
+    const [hook, setHook] = useState('UseState');
+    const HookComponent = componentMap[hook];
+    console.log(HookComponent)
 
     return (
         <>
             <nav>
-                <button onClick={() => setHook('useState')}>useState</button>
-                <button onClick={() => setHook('useEffect')}>useEffect</button>
-                <button onClick={() => setHook('useContext')}>useContext</button>
-                <button onClick={() => setHook('useRef')}>useref</button>
+                {hooks.map(hookName => (
+                    <button key={hookName} onClick={() => setHook(hookName)}>
+                        {hookName}
+                    </button>
+                ))}
             </nav>
-            {
-                hook === 'useState' && <>
-                    <h1>useState</h1>
-                    <hr></hr>
-                    <UseState />
-                </>
-            }
-            {
-                hook === 'useEffect' && <>
-                    <h1>useEffect</h1>
-                    <hr></hr>
-                    <UseEffect />
-                </>
-            }{
-                hook === 'useContext' && <>
-                    <h1>useContext</h1>
-                    <hr></hr>
-                    <UseContext />
-                </>
-            }{
-                hook === 'useRef' && <>
-                    <h1>useContext</h1>
-                    <hr></hr>
-                    <UseRef />
-                </>
-            }
+            <Suspense fallback={<div>Loading...</div>}>
+                {HookComponent && (
+                    <>
+                        <h1>{hook}</h1>
+                        <hr />
+                        <HookComponent />
+                    </>
+                )}
+            </Suspense>
         </>
     );
 }
