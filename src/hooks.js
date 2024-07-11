@@ -7,5 +7,6 @@ export const hooks = [
     'UseCallback',
     'UseReducer',
     'UseTransition',
-    'UseDeferredValue'
+    'UseDeferredValue',
+    'UseLayoutEffect'
 ];
