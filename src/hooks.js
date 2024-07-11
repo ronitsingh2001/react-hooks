@@ -8,5 +8,6 @@ export const hooks = [
     'UseReducer',
     'UseTransition',
     'UseDeferredValue',
-    'UseLayoutEffect'
+    'UseLayoutEffect',
+    'CustomHook'
 ];
