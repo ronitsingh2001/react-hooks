@@ -1,3 +1,4 @@
+
 export const hooks = [
     'UseState',
     'UseEffect',
@@ -9,5 +10,7 @@ export const hooks = [
     'UseTransition',
     'UseDeferredValue',
     'UseLayoutEffect',
-    'CustomHook'
+    'CustomHook',
+    'UseOnScreen',
+    'UseStateWithValidation'
 ];
