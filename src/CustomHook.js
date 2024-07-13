@@ -7,11 +7,14 @@ import useDebounce from "./custom-hooks/useDebounce";
 import useUpdateTime from "./custom-hooks/useUpdateEffect";
 import useUpdateEffect from "./custom-hooks/useUpdateEffect";
 import useArray from "./custom-hooks/useArray";
+import usePrevious from "./custom-hooks/usePrevious";
 
 export default function CustomHook() {
     const [name, setName] = useLocalStorage('name', '');
     const [value, toggleValue] = useToggle(false);
-    const [count, setCount] = useState(10);
+    const [count, setCount] = useState(0);
+    const [name1, setName1] = useState('John');
+    const prevCount = usePrevious(count);
     const { clear, reset } = useTimeout(() => { }, 1000);
     const { array, set, push, remove, filter, update, clearArr } = useArray([1, 2, 3, 4, 5, 6]);
     // useDebounce(() => alert(count), 1000, [count, name]);
@@ -37,5 +40,10 @@ export default function CustomHook() {
         <button onClick={()=>filter(n => n < 3)}>Keep number less than 3</button>
         <button onClick={()=>set([1,2])}>Set to 1,2</button>
         <button onClick={clearArr}>Clear</button>
+        <hr />
+        <div>{count} - {prevCount}</div>
+        <div>{name1}</div>
+        <button onClick={()=>setCount(prevState => prevState +1)}>Increment</button>
+        <button onClick={()=>setName1('Kyle')}>Change Name</button>
     </>;
 }
